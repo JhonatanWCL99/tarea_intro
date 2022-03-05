@@ -16,6 +16,8 @@ class LoginManualController extends Controller
     public function authenticate(Request $request)
     {
         if ($request->ajax()) {
+
+            dd($request);
             $user = User::Where('codigo',$request->codigo)->get();
             return response()->json(
                 $user->toArray()

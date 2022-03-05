@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('personales.create');
     }
 
-    public function store(){
-        
+    public function store(Request $request){
+        dd($request);
     }
 }
