@@ -32,14 +32,8 @@ Admin Login
             <div class="invalid-feedback">
                 {{ $errors->first('codigo') }}
             </div><br>
-           <!--  <label class="label" for="codigo">Sucursal *</label><br><br>
-            <div class="selectric-hide-select">
-                <select name="categoria_id" class="form-control selectric">
-                    @foreach($sucursales as $sucursal)
-                    <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
-                    @endforeach
-                </select>
-            </div> -->
+
+
             <div class="form-group">
                 <div class="d-block">
                 </div>

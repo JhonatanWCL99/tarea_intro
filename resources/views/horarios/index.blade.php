@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'proveedores', 'titlePage' => 'Proveedores'])
+@extends('layouts.app', ['activePage' => 'horarios', 'titlePage' => 'horarios'])
 
 @section('content')
 
@@ -8,7 +8,7 @@
 
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Proveedores Registrados</h3>
+        <h3 class="page__heading">Horarios Marcados</h3>
 
     </div>
     <div class="section-body">
@@ -17,63 +17,44 @@
                 <div class="card">
 
                     <div class="card-body">
-                    <a class="btn btn-outline-info" href="{{route('proveedores.create')}}">Nuevo Proveedor</a><br><br>
+
                     <div class="table-responsive">
                             <table class="table table-striped mt-15" id="table">
                                 <thead style="background-color: #6777ef;">
 
 
-                                    <th style="color: #fff;">Nombre</th>
+                                    <th style="color: #fff;">Fecha</th>
 
-                                    <th style="color: #fff;">Empresa</th>
-                                    <th style="color: #fff;">Direccion</th>
-                                    <th style="color: #fff;">Nit</th>
+                                    <th style="color: #fff;">Hora Ingreso</th>
+                                    <th style="color: #fff;">Horario Entrada</th>
+                                    <th style="color: #fff;">Horario Salida</th>
 
-                                    <th style="color: #fff;">Estado</th>
+                                    <th style="color: #fff;">Horas Trabajadas</th>
                                     <th style="color: #fff;"></th>
                                     <!-- <th style="color: #fff;"></th> -->
                                     <!-- <th style="color: #fff;">Acciones</th> -->
                                 </thead>
                                 <tbody>
-                                    @foreach ($proveedores as $proveedor)
+                                    @foreach ($horarios as $horario)
                                     <tr>
+
+                                      <td>{{$horario->fecha}}</td>
+                                        <td>{{$horario->hora_ingreso}}</td>
+                                        <td>{{$horario->hora_entrada}}</td>
+                                        <td>{{$horario->hora_salida}}</td>
                                         <td>
-                                            <!--<p class="titulo"> dasd</p>-->
-                                            <a href="{{route('proveedores.show', $proveedor->id)}}" value="{{$proveedor->nombre}}">{{$proveedor->nombre}} </a>
+                                        {{$horario->horas_trabajadas}}
                                         </td>
-                                        <!--   <td>{{$proveedor->celular}}</td> -->
-                                        <td>{{$proveedor->empresa}}</td>
-                                        <td>{{$proveedor->direccion}}</td>
-                                        <td>{{$proveedor->nit}}</td>
-                                        <td>
-                                            @if($proveedor->estado==1)
-                                            <div class="badge badge-pill badge-success">Activo</div>
-                                            @endif
-                                            @if($proveedor->estado==0)
-                                            <div class="badge badge-pill badge-danger">Inactivo</div>
-                                            @endif
-                                        </td>
-                                        <!--<td>
 
-                                    </div>
-
-                                            <form action="{{route('proveedores.destroy',$proveedor->id)}}" id="formulario-eliminar" class="formulario-eliminar" method="POST">
-                                                @csrf
-                                                @method('Delete')
-                                                <button type="submit" class="btn btn-danger  mr-3" id="">Borrar</button>
-
-                                                <a href="{{route('proveedores.show', $proveedor->id)}}" class="btn btn-info">Mostrar </a>
-                                            </form>
-                                        </td>-->
                                         <td>
                                         <div class="dropdown" style="position: absolute;" >
                                             <a href="#" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item " href="{{ route('proveedores.edit', $proveedor->id) }}">Editar</a></li>
+                                                <li><a class="dropdown-item " href="{{ route('horarios.create', $horario->id) }}">Editar</a></li>
                                                 <li>
-                                                    <form action="{{route('proveedores.destroy',$proveedor->id)}}" id="formulario-eliminar2" class="formulario-eliminar" method="POST">
+                                                    <form action="{{route('horarios.create',$horario->id)}}" id="formulario-eliminar2" class="formulario-eliminar" method="POST">
                                                     @csrf
                                                     @method('Delete')
                                                     <a class="dropdown-item" href="javascript:;" onclick="document.getElementById('formulario-eliminar2').submit()" id="enlace">Eliminar</a>
