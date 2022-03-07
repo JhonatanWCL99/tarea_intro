@@ -76,6 +76,17 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="total_pagar">Total a Pagar<span class="required">*</span></label>
+                                            <input type="text" class="form-control  @error('total_pagar') is-invalid @enderror" name="total_pagar" value="{{$total_pagar}}">
+                                            @error('total_pagar')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-primary">Asignar</button>

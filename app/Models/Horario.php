@@ -9,5 +9,5 @@ class Horario extends Model
 {
     use HasFactory;
     protected $table = 'horarios';
-    protected $fillable = ['fecha','hora_ingreso','hora_entrada','hora_salida','horas_trabajadas'];
+    protected $fillable = ['fecha','hora_ingreso','hora_entrada','hora_salida','horas_trabajadas','total_pagar'];
 }

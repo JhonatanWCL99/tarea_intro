@@ -28,7 +28,7 @@ class HorarioController extends Controller
     {
         $fecha = Carbon::now();
         $hora_ent = Carbon::now();
-        $hora_sal = '23:05:45';
+        $hora_sal = '23:55:45';
         $horas_trab = $hora_ent->diffInHours($hora_sal);
         $total_pagar = $horas_trab*12;
         return view('horarios.create')->with('fecha',$fecha)->with('hora_ent', $hora_ent)->with('hora_sal',$hora_sal)->with('horas_trab',$horas_trab)->with('total_pagar',$total_pagar);
@@ -55,6 +55,7 @@ class HorarioController extends Controller
         $horarios->hora_entrada =$request->get('hora_entrada');
         $horarios->hora_salida =$request->get('hora_salida');
         $horarios->horas_trabajadas =$request->get('horas_trabajadas');
+        $horarios->total_pagar =$request->get('total_pagar');
 
         $horarios->save();
 

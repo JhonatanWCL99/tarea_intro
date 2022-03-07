@@ -133,9 +133,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/cargos/{id}', [\App\Http\Controllers\CargoController::class, 'destroy'])->name('cargos.destroy');
 });
 
-Route::get('/horarios', [App\Http\Controllers\HorarioController::class, 'index'])->name('horarios.index');
-    Route::get('/horarios/create', [App\Http\Controllers\HorarioController::class, 'create'])->name('horarios.create');
-    Route::post('/horarios', [App\Http\Controllers\HorarioController::class, 'store'])->name('horarios.store');
+
 
 
 /* Route::post('/login', function () {
@@ -147,3 +145,20 @@ Route::get('/horarios', [App\Http\Controllers\HorarioController::class, 'index']
     return "No estas logeado";
 
 })->name('login.prueba'); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/horarios', [App\Http\Controllers\HorarioController::class, 'index'])->name('horarios.index');
+    Route::get('/horarios/create', [App\Http\Controllers\HorarioController::class, 'create'])->name('horarios.create');
+    Route::post('/horarios', [App\Http\Controllers\HorarioController::class, 'store'])->name('horarios.store');

@@ -30,6 +30,8 @@
                                     <th style="color: #fff;">Horario Salida</th>
 
                                     <th style="color: #fff;">Horas Trabajadas</th>
+                                    <th style="color: #fff;">Total a Pagar</th>
+
                                     <th style="color: #fff;"></th>
                                     <!-- <th style="color: #fff;"></th> -->
                                     <!-- <th style="color: #fff;">Acciones</th> -->
@@ -45,6 +47,7 @@
                                         <td>
                                         {{$horario->horas_trabajadas}}
                                         </td>
+                                        <td>{{$horario->total_pagar}}</td>
 
                                         <td>
                                         <div class="dropdown" style="position: absolute;" >
