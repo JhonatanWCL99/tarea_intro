@@ -122,6 +122,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/personales', [App\Http\Controllers\UserController::class, 'index'])->name('personales.index');
     Route::get('/personales/create', [App\Http\Controllers\UserController::class, 'create'])->name('personales.create');
     Route::post('/personales', [App\Http\Controllers\UserController::class, 'contratar'])->name('personales.contratar');
+    Route::get('/personales/show/{id}', [App\Http\Controllers\UserController::class, 'showDetalleContrato'])->name('personales.showDetalleContrato');
     Route::delete('/personales/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('personales.destroy');
 });
 
