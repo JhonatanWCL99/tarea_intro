@@ -16,7 +16,10 @@ class CreateHabilidadesTable extends Migration
         Schema::create('habilidades', function (Blueprint $table) {
             $table->id();
             $table->string('habilidad');
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
+
+            $table->foreign('usuario_id')->on('users')->references('id');
         });
     }
 

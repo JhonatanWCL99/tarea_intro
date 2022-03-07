@@ -9,5 +9,5 @@ class Habilidad extends Model
 {
     use HasFactory;
     protected $table = 'habilidades';
-    protected $fillable = ['habilidad'];
+    protected $fillable = ['habilidad','usuario_id'];
 }

@@ -20,7 +20,10 @@ class CreateExperienciasLaboralesTable extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->string('descripcion');
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
+
+            $table->foreign('usuario_id')->on('users')->references('id');
         });
     }
 
