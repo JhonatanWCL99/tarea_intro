@@ -124,7 +124,7 @@ Route::post('/auth/find', [App\Http\Controllers\LoginManualController::class, 'a
     Route::post('/personales', [App\Http\Controllers\UserController::class, 'contratar'])->name('personales.contratar');
     Route::get('/personales/show/{id}', [App\Http\Controllers\UserController::class, 'showDetalleContrato'])->name('personales.showDetalleContrato');
     Route::delete('/personales/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('personales.destroy');
-
+    Route::get('/personales/editarContrato/{id}', [App\Http\Controllers\UserController::class, 'actualizarContrato'])->name('personales.actualizarContrato');
 
 /*Rutas Cargos  */
 Route::group(['middleware' => ['auth']], function () {
@@ -163,3 +163,4 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/horarios', [App\Http\Controllers\HorarioController::class, 'index'])->name('horarios.index');
     Route::get('/horarios/create', [App\Http\Controllers\HorarioController::class, 'create'])->name('horarios.create');
     Route::post('/horarios', [App\Http\Controllers\HorarioController::class, 'store'])->name('horarios.store');
+    Route::post('/funcionarios', [App\Http\Controllers\HorarioController::class, 'funcionarios'])->name('sucursal.funcionarios');

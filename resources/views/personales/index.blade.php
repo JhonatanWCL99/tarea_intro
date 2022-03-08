@@ -49,9 +49,14 @@
                                                     </a>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a class="dropdown-item"
-                                                                href="{{ route('personales.showDetalleContrato', $personal->id) }}">Ver Detalle</a>
+                                                                href="{{ route('personales.showDetalleContrato', $personal->id) }}">Ver
+                                                                Detalle</a>
                                                         </li>
-                                                        <li>
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('personales.actualizarContrato', $personal->id) }}">Actualizar
+                                                                Contrato</a>
+                                                        </li>
+                                                        {{-- <li>
                                                             <form
                                                                 action="{{ route('personales.destroy', $personal->id) }}"
                                                                 id="formulario-eliminar2" class="formulario-eliminar"
@@ -62,7 +67,7 @@
                                                                     onclick="document.getElementById('formulario-eliminar2').submit()"
                                                                     id="enlace">Eliminar</a>
                                                             </form>
-                                                        </li>
+                                                        </li> --}}
                                                     </ul>
                                                 </div>
                                             </td>

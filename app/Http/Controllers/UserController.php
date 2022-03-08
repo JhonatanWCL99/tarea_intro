@@ -103,4 +103,8 @@ class UserController extends Controller
         }
         return redirect()->route('personales.index')->with('success', 'Personal contratado correctamente');
     }
+
+    public function actualizarContrato(){
+
+    }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Encargado;
 use App\Models\Horario;
-use Carbon\Carbon;
+use App\Models\Sucursal;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HorarioController extends Controller
@@ -16,7 +18,7 @@ class HorarioController extends Controller
     public function index()
     {
         $horarios = Horario::all();
-        return view('horarios.index')->with('horarios',$horarios);
+        return view('horarios.index', compact('horarios'));
     }
 
     /**
@@ -26,12 +28,9 @@ class HorarioController extends Controller
      */
     public function create()
     {
-        $fecha = Carbon::now();
-        $hora_ent = Carbon::now();
-        $hora_sal = '23:55:45';
-        $horas_trab = $hora_ent->diffInHours($hora_sal);
-        $total_pagar = $horas_trab*12;
-        return view('horarios.create')->with('fecha',$fecha)->with('hora_ent', $hora_ent)->with('hora_sal',$hora_sal)->with('horas_trab',$horas_trab)->with('total_pagar',$total_pagar);
+        $encargados = Encargado::all();
+        $sucursales = Sucursal::all();
+        return view('horarios.create')->with('sucursales', $sucursales)->with('encargados', $encargados);
     }
 
     /**
@@ -44,22 +43,25 @@ class HorarioController extends Controller
     {
         $request->validate([
             'fecha' => 'required',
-            'hora_ingreso' => 'required',
-            'hora_entrada' => 'required',
-
+            'horario_ingreso' => 'required',
+            'horario_entrada' => 'required',
         ]);
 
-        $horarios= new Horario();
-        $horarios->fecha =$request->get('fecha');
-        $horarios->hora_ingreso =$request->get('hora_ingreso');
-        $horarios->hora_entrada =$request->get('hora_entrada');
-        $horarios->hora_salida =$request->get('hora_salida');
-        $horarios->horas_trabajadas =$request->get('horas_trabajadas');
-        $horarios->total_pagar =$request->get('total_pagar');
+        $horario = new horario();
 
-        $horarios->save();
+        $horario->fecha = $request->get('fecha');
+        $horario->horario_ingreso = $request->get('horario_ingreso');
+        $horario->horario_entrada = $request->get('horario_entrada');
+        $horario->horario_salida = $request->get('horario_salida');
+        $horario->turno = $request->get('turno');
 
-        return redirect()->route('horarios.index');
+
+        $horario->sucursal_id = $request->get('sucursal_id');
+        $horario->encargado_id = $request->get('encargado_id');
+
+        $horario->save();
+
+        return redirect()->route('productos.index');
     }
 
     /**
@@ -105,5 +107,24 @@ class HorarioController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function funcionarios(Request $request)
+    {
+        if (isset($request->texto)) {
+            $funcionarios2 = User::where('sucursal_id',$request->texto)->get();
+            return response()->json(
+                [
+                    'lista' => $funcionarios2,
+                    'success' => true
+                ]
+            );
+        } else {
+            return response()->json(
+                [
+                    'success' => false
+                ]
+            );
+        }
     }
 }
